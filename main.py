@@ -1,31 +1,13 @@
 #teen simulator
-personlist = []
-class Person(object):
-  def __init__(self,name):
-    global Personlist
-    self.name = name
-    self.inventory = []
-    self.location = False
-    personlist.append(self)
-    
+from person import Person, Player, NPC, personlist
+from room import Room
 
-class NPC(Person):
-  def __init__(self,name):
-    super().__init__(name)
-    self.lines = {}
 
-ross = NPC("Ross")
-print (ross.inventory)
-
-class Room(object):
-  def __init__(self,name,coordinates):
-    global personlist
-    self.name = name
-    self.coordinates = coordinates
-    self.people = []
-    for person in personlist:
-      if person.location == self.coordinates:
-        self.people.append(person)
-    
-
+daniel = Player("Daniel")
+daniel.location = [0,0]
+while True:
+  cmd = input(">")
+  cmd = cmd.split(" ")
+  daniel.move(cmd)
+  print (daniel.location)
 
